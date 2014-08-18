@@ -15,7 +15,7 @@ end entity;
 --definicion de la arquitectura--
 architecture adder_log of adder is begin
     process (a, b) is begin
-        y <= std_logic_vector(SIGNED(a) + SIGNED(b));
+        y <= std_logic_vector(UNSIGNED(a) + UNSIGNED(b));
     end process;
 end architecture;
 
