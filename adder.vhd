@@ -19,7 +19,9 @@ architecture adder_log of adder is begin
     end process;
 end architecture;
 
--- 
+-- (+) es un operador que en este caso recibe dos std_logic_vector y devuelve un
+-- std_logic_vector.
+--
 --para compilar tenemos
 --ghdl -a -Wc,-m32 -Wa,--32 nombre.vhdl
      

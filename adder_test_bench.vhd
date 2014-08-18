@@ -15,4 +15,15 @@ architecture test_bench of adder is
         y: out std_logic_vector(31 downto 0)
     );
     end component;
-    signal
+    signal a_prima, b_prima, y_prima: std_logic_vector(31 downto 0);
+begin
+    adder0: adder port map (y=>y_prima, a=>a_prima, b=>b_prima);
+
+    process begin
+    a_prima <= x"FFFFFFFF" after 0 ns;
+    b_prima <= x"FFFFFFFF" after 0 ns;
+    end process;
+end architecture;
+
+-- Se compila haciendo:
+-- ghdl -r adder_test_bench --stop-time=40ns --vcd =adder.vcd
