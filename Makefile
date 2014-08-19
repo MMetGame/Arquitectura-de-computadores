@@ -1,17 +1,15 @@
 all: run
 
-run: adder_test_bench
-	ghdl -r adder_test_bench --stop-time=50ns --vcd=adder.vcd
+run: adder_tb
+	ghdl -r adder_tb --stop-time=50ns --vcd=adder.vcd
 
-adder_test_bench:adder adder_test_bench.vhd
-    ghdl -a adder_test_bench.vhd
-    ghdl -e adder_test_bench	
+adder_tb: adder adder_tb.vhd
+	ghdl -a adder_tb.vhd
+	ghdl -e adder_tb	
 
 adder: adder.vhd
-    ghdl -a adder.vhd
+	ghdl -a adder.vhd
 
-clean:
-	rm -rf adder_test_bench
-	rm -rf *.o
-	rm -rf *.cf
-	rm -rf *.vcd
+clean: 
+	rm -rf adder_tb	rm -rf *.o rm -rf *.cf rm -rf *.vcd 
+
