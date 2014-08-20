@@ -1,7 +1,7 @@
 all: run
 
 run: adder_tb
-	ghdl -r adder_tb --stop-time=100ns --vcd=adder.vcd
+	ghdl -r adder_tb --stop-time=60ns --vcd=adder.vcd
 
 adder: adder.vhd
 	ghdl -a adder.vhd
