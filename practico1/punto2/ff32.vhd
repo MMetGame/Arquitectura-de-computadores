@@ -16,7 +16,7 @@ end entity;
 architecture ff_32_arch of ff32 is begin
     process (reset, clk) begin
         if (reset = '1') then
-            q<=x'00000001';
+            q<=x"00000001";
         elsif (clk'EVENT and clk='1') then
             q<=d;
         end if;
