@@ -5,7 +5,7 @@ run: adder_tb
 
 adder_tb: adder adder_tb.vhd
 	ghdl -a adder_tb.vhd
-	ghdl -e adder_tb	
+	ghdl -e adder_tb
 
 adder: adder.vhd
 	ghdl -a adder.vhd
