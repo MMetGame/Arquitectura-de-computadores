@@ -9,7 +9,7 @@ port (
     a, b: in std_logic_vector(0 to 31);
     alucontrol: out std_logic_vector(0 to 2);
     zero: out std_logic;
-    result: out std_logic_vector(0 to 31);
+    result: out std_logic_vector(0 to 31)
 );
 end entity;
 --definicion de la arquitectura

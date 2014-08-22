@@ -7,14 +7,14 @@ entity multp is
 port (
     s: in std_logic;
     d0, d1: in std_logic_vector(31 downto 0);
-    y: out std_logic_vector(31 downto 0);
+    y: out std_logic_vector(31 downto 0)
 );
 end entity;
 
 --arquitectura
 architecture multp_32 of multp is begin
     process(s) begin -- no se queda esperando por los valores s,d0,d1
-        if s="0" then
+        if (s='0') then
             y<=d0;
         else
             y<=d1;
