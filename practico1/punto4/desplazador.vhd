@@ -5,21 +5,23 @@ use IEEE.STD_LOGIC_1164.all;
 --definicion de las entidades
 entity desplazador is
 port (
-    a: in std_logic_vector(31 downto 0);
-    y: out std_logic_vector(31 downto 0);
+    a: in std_logic_vector(0 to 31);
+    y: out std_logic_vector(0 to 31);
 );
 end entity;
 
 --arquitectura
 architecture despl_32 of desplazador is begin
     process 
-        variable r: std_logic_vector(31 downto 0);
+        variable temp: std_logic_vector(0 to 31);
     begin
-        r(0) := "0"; --posicion 1
-        r(1) := "0"; --posicion 2
+        temp(0) := "0"; --posicion 1
+        temp(1) := "0"; --posicion 2
         for i in 2 to a'LENGTH-1 loop
-            r(i) := a(i+2);
+            temp(i) := a(i);
         end loop;
+        y<=temp;
     end process;
 end architecture;
 -- preguntar big endian o little endian???
+
