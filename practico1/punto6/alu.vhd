@@ -7,29 +7,38 @@ use IEEE.NUMERIC_STD.all; --función (-) y SIGNED
 entity alu is
 port (
     a, b: in std_logic_vector(0 to 31);
-    alucontrol: out std_logic_vector(0 to 2);
+    alucontrol: in std_logic_vector(0 to 2);
     zero: out std_logic;
     result: out std_logic_vector(0 to 31)
 );
 end entity;
 --definicion de la arquitectura
-architecture alu_32 of alu is begin
-    process
+architecture alu_32 of alu is
+
+begin
+    process(alucontrol,a,b)
+        variable temp: std_logic_vector(31 downto 0);
     begin
-        with alucontrol select
-            result <= (a and b) when "000",
-                    (a or b) when "001",
-                    std_logic_vector(SIGNED(a) + SIGNED(b)) when "001",
-                    (a and not(b)) when "100",
-                    (a or not(b)) when "101",
-                    std_logic_vector(SIGNED(a)-SIGNED(b)) when "110",
-                    (if a<b then result <= x'00000001';
-                    else result <= x'00000000';
-                    end if); when "111",
-                    null when others;
-        if result = x'00000000' then
-            zero <= 1;
+        case alucontrol is
+            when "000" => temp:= a and b;
+            when "001" => temp:= a or b;
+            when "010" => temp:= std_logic_vector(unsigned(a) + unsigned(b));
+            when "100" => temp:= a and (not b);
+            when "101" => temp:= a or (not b);
+            when "110" => temp:= std_logic_vector(unsigned(a) - unsigned(b));
+            when "111" => 
+                if a<b then 
+                    temp := x"00000001";
+                else
+                    temp := x"00000000";
+                end if;
+            when others => temp := "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU";
+        end case;
+        result <= temp;
+        if temp = x"00000000" then
+            zero <= '1';
         else
-            zero <= 0;
+            zero <= '0';
         end if;
+    end process;
 end architecture;
