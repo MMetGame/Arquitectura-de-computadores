@@ -30,5 +30,6 @@ begin
                     when others => temp := "UUU";
                 end case;
         end case;
+        alucontrol <= temp;
     end process;
 end architecture;
