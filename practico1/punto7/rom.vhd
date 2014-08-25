@@ -23,6 +23,8 @@ begin
             --Converts a non-negative INTEGER to an UNSIGNED vector withthe specified SIZE.
             mem(var) := std_logic_vector(to_unsigned(var, bits));
         end loop;
-        y<=mem(to_integer(unsigned(a))); 
+        report "puto";
+        y<=mem(to_integer(unsigned(a)));
+        report "nunca llego"; 
     end process;
 end architecture;

@@ -27,12 +27,12 @@ begin
             when "101" => temp:= a or (not b);
             when "110" => temp:= std_logic_vector(unsigned(a) - unsigned(b));
             when "111" => 
-                if a<b then 
+                if a<b then
                     temp := x"00000001";
                 else
                     temp := x"00000000";
                 end if;
-            when others => temp := "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU";
+            when others => temp := "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ";
         end case;
         result <= temp;
         if temp = x"00000000" then
