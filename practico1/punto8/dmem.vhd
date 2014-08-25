@@ -19,7 +19,7 @@ end entity;
 architecture rom_32 of ram is
     type type_mem is array (0 to words-1) of std_logic_vector(bits-1 downto 0); --Es una matriz
 begin
-    process(a)
+    process(clk)
         variable position: integer;
         variable mem: type_mem;
     begin
@@ -32,6 +32,7 @@ begin
             position := to_integer(unsigned(a(7 downto 2)));
             if (we='1') then
                 mem(position) := wd;
+                rd<=wd;
             else
                 rd<=mem(position);
             end if;
