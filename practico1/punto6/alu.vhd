@@ -12,9 +12,9 @@ port (
     result: out std_logic_vector(0 to 31)
 );
 end entity;
+
 --definicion de la arquitectura
 architecture alu_32 of alu is
-
 begin
     process(alucontrol,a,b)
         variable temp: std_logic_vector(31 downto 0);

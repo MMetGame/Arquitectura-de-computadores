@@ -19,7 +19,7 @@ begin
     process(a) 
         variable mem: type_mem;
     begin
-        for var in 0 to words loop
+        for var in 0 to words-1 loop
             --Converts a non-negative INTEGER to an UNSIGNED vector withthe specified SIZE.
             mem(var) := std_logic_vector(to_unsigned(var, bits));
         end loop;
