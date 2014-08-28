@@ -2,21 +2,21 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity dmem_tb is 
+    generic (bits: integer:= 32; words: integer:= 64);
 end entity;
 
-architecture arq_test_dmem of dmem_tb is
+architecture test_dmem of dmem_tb is
     component dmem
-        generic (bits: integer:= 32; words: integer:= 64);
         port (
             a, wd: in std_logic_vector(bits-1 downto 0);
             rd: out std_logic_vector(bits-1 downto 0);
-            clk, we: in bit
+            clk, we: in std_logic
             );
     end component;
-    signal a1, wd1, rd1: std_logic_vector(31 downto 0);
-    signal clk1, we1: bit;
+    signal a1, wd1, rd1: std_logic_vector(bits downto 0);
+    signal clk1, we1: std_logic;
 begin
-    prueba0: dmem port map(a=>a1, wd=>wd1, clk=>clk1, we=>we1, rd=>rd1);
+    u0: dmem port map(a=>a1, wd=>wd1, clk=>clk1, we=>we1, rd=>rd1);
     process
     begin
         a1 <= x"00010001";
@@ -37,17 +37,15 @@ begin
         wd1 <= x"AAAAAAAA";
         wait for 5 ns;
         wd1 <= x"BBBBBBBB";
-        wait for 6 ns;
+        wait for 5 ns;
         wd1 <= x"CCCCCCCC";
-        wait for 7 ns;
+        wait for 5 ns;
         wd1 <= x"DDDDDDDD";
-        wait for 8 ns;
+        wait for 5 ns;
         wd1 <= x"EEEEEEEE";
-        wait for 9 ns;
+        wait for 5 ns;
         wd1 <= x"FFFFFFFF";
-        wait for 10 ns;
-        wd1 <= x"99999999";
-        wait for 11 ns;
+        wait for 5 ns;
     end process;
     process
     begin
@@ -59,19 +57,17 @@ begin
     process
     begin
         we1 <= '0';
-        wait for 6 ns;
+        wait for 5 ns;
         we1 <= '1';
-        wait for 8 ns;
+        wait for 5 ns;
         we1 <= '0';
-        wait for 12 ns;
+        wait for 5 ns;
         we1 <= '1';
-        wait for 9 ns;
+        wait for 5 ns;
         we1 <= '0';
-        wait for 7 ns;
+        wait for 5 ns;
         we1 <= '1';
-        wait for 4 ns;
-        we1 <= '0';
-        wait for 8 ns;
+        wait for 5 ns;
     end process;
 end architecture;
 

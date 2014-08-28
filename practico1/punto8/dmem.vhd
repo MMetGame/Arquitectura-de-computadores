@@ -30,9 +30,11 @@ begin
         if (clk'EVENT and clk='1') then
             --de "a" copio de 7 a 2
             position := to_integer(unsigned(a(7 downto 2)));
+            --si quiero escribir la memoria
             if (we='1') then
                 mem(position) := wd;
                 rd<=wd;
+            --si quiero leer
             else
                 rd<=mem(position);
             end if;
