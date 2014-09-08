@@ -31,5 +31,5 @@ architecture controller_32 of controller is
     signal AluOp: std_logic_vector(1 downto 0);
 begin
     u0: maindec port map(Op, MemToReg, MemWrite, Branch, AluSrc, RegDst, RegWrite, Jump, AluOp);
-    u1: aludec port map(Funct=>funct, AluOp=>aluop, AluControl=>alucontrol);
+    u1: aludec port map(Funct=>funct, AluOp=>aluop, alucontrol=>AluControl);
 end architecture;
